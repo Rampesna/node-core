@@ -1,9 +1,27 @@
-const GetAll = (
+const {
+    serviceResponse
+} = require("../../../core/ServiceResponse");
+const Joi = require('joi');
+const Schema = Joi.object({
+
+});
+
+const GetAll = async (
     request,
     response,
     next
 ) => {
-    next();
+    try {
+        await Schema.validateAsync(request.props);
+        next();
+    } catch (error) {
+        return response.send(serviceResponse(
+            false,
+            'Invalid request',
+            error.details,
+            422
+        ), 422);
+    }
 };
 
 module.exports = GetAll;

@@ -1,22 +1,27 @@
 const {
     serviceResponse
-} = require('../../../core/ServiceResponse');
+} = require("../../../core/ServiceResponse");
+const Joi = require('joi');
+const Schema = Joi.object({
+    id: Joi.number().required()
+});
 
-const DeleteRequest = (
+const DeleteRequest = async (
     request,
     response,
     next
 ) => {
-    if (!request.props.id) {
+    try {
+        await Schema.validateAsync(request.props);
+        next();
+    } catch (error) {
         return response.send(serviceResponse(
             false,
-            "email is required",
-            null,
+            'Invalid request',
+            error.details,
             422
         ), 422);
     }
-
-    next();
 };
 
 module.exports = DeleteRequest;

@@ -1,31 +1,28 @@
 const {
     serviceResponse
 } = require('../../../core/ServiceResponse');
+const Joi = require('joi');
+const Schema = Joi.object({
+    email: Joi.string().email().required(),
+    password: Joi.string().required()
+});
 
-const LoginRequest = (
+const LoginRequest = async (
     request,
     response,
     next
 ) => {
-    if (!request.props.email) {
+    try {
+        await Schema.validateAsync(request.props);
+        next();
+    } catch (error) {
         return response.send(serviceResponse(
             false,
-            "email is required",
-            null,
+            'Invalid request',
+            error.details,
             422
         ), 422);
     }
-
-    if (!request.props.password) {
-        return response.send(serviceResponse(
-            false,
-            "password is required",
-            null,
-            422
-        ), 422);
-    }
-
-    next();
 };
 
 module.exports = LoginRequest;
