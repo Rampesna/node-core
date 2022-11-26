@@ -25,6 +25,7 @@
     "sequelize": "^6.25.8",
     "sequelize-cli": "^6.5.2",
     "sqlite3": "^5.1.2",
-    "tedious": "^15.1.2"
+    "tedious": "^15.1.2",
+    "yargs": "^17.6.2"
   }
 }
