@@ -5,10 +5,10 @@ function serviceResponse(
     statusCode,
 ) {
     return {
-        'isSuccess': isSuccess,
-        'message': message,
-        'data': data,
-        'statusCode': statusCode,
+        isSuccess: isSuccess,
+        message: message,
+        data: data,
+        statusCode: statusCode,
     };
 }
 

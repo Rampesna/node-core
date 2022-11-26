@@ -1,10 +1,9 @@
 const {
     serviceResponse
-} = require('../../helpers/ServiceResponse');
-const jwt = require('jsonwebtoken');
-const environments = require('dotenv').config().parsed;
+} = require('../../core/ServiceResponse');
+const PersonalAccessTokenService = require('../../services/sequelize/PersonalAccessTokenService');
 
-const AuthenticationMiddleware = (
+const AuthenticationMiddleware = async (
     request,
     response,
     next
@@ -18,24 +17,15 @@ const AuthenticationMiddleware = (
         ), 401);
     }
 
-    jwt.verify(request.headers['authorization'].split(' ')[1], environments.JWT_SECRET_KEY, (err, decoded) => {
-        if (err) {
-            return response.send(serviceResponse(
-                false,
-                'You are not authorized to access this route',
-                null,
-                401
-            ), 401);
-        }
+    var validateTokenResponse = await PersonalAccessTokenService.validateToken(request.headers['authorization'].split(' ')[1]);
 
-        request.user = {
-            id: decoded.id,
-            name: decoded.name,
-            email: decoded.email,
-        }
+    request.user = {
+        id: validateTokenResponse.data.id,
+        name: validateTokenResponse.data.name,
+        email: validateTokenResponse.data.email,
+    }
 
-        next();
-    });
+    next();
 };
 
 module.exports = AuthenticationMiddleware;

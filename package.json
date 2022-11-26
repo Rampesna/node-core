@@ -10,8 +10,20 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^5.1.0",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
-    "jsonwebtoken": "^8.5.1"
+    "jsonwebtoken": "^8.5.1",
+    "mariadb": "^3.0.2",
+    "mongoose": "^6.7.3",
+    "mysql2": "^2.3.3",
+    "nodemon": "^2.0.20",
+    "oracledb": "^5.5.0",
+    "pg": "^8.8.0",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.25.8",
+    "sequelize-cli": "^6.5.2",
+    "sqlite3": "^5.1.2",
+    "tedious": "^15.1.2"
   }
 }

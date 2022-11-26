@@ -1,4 +1,4 @@
-const GetProfile = (
+const GetProfileRequest = (
     request,
     response,
     next
@@ -6,4 +6,4 @@ const GetProfile = (
     next();
 };
 
-module.exports = GetProfile;
+module.exports = GetProfileRequest;
