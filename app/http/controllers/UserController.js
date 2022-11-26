@@ -1,6 +1,5 @@
 const UserService = require('../../services/sequelize/UserService');
 
-
 exports.login = async (request, response) => {
     serviceResponse = await UserService.login(request.props.email, request.props.password, request.headers['user-agent']);
     response.send(serviceResponse, serviceResponse.statusCode);

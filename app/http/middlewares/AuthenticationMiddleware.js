@@ -1,6 +1,4 @@
-const {
-    serviceResponse
-} = require('../../core/ServiceResponse');
+const {serviceResponse} = require('../../core/ServiceResponse');
 const PersonalAccessTokenService = require('../../services/sequelize/PersonalAccessTokenService');
 
 const AuthenticationMiddleware = async (

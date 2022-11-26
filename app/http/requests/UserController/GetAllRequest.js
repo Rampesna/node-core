@@ -1,6 +1,4 @@
-const {
-    serviceResponse
-} = require("../../../core/ServiceResponse");
+const {serviceResponse} = require("../../../core/ServiceResponse");
 const Joi = require('joi');
 const Schema = Joi.object({
 

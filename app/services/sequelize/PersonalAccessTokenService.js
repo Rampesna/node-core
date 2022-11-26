@@ -1,6 +1,4 @@
-const {
-    serviceResponse
-} = require("../../core/ServiceResponse");
+const {serviceResponse} = require("../../core/ServiceResponse");
 const IPersonalAccessTokenService = require("../../interfaces/IPersonalAccessTokenService");
 const PersonalAccessTokenModel = require("../../models/sequelize/personelaccesstoken")();
 const jwt = require('jsonwebtoken');
