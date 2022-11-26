@@ -16,6 +16,34 @@ npm init
 
 Change config/database.json file according to your own information.
 
+```shell
+{
+  "development": {
+    "username": "root",
+    "password": null,
+    "database": "nodejscore",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+
+  "test": {
+    "username": "root",
+    "password": null,
+    "database": "nodejscore",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+
+  "production": {
+    "username": "root",
+    "password": null,
+    "database": "nodejscore",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  }
+}
+```
+
 For create Users and PersonelAccessTokens tables run migrate command
 
 ```shell
