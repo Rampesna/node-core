@@ -15,11 +15,6 @@ exports.getAll = async (request, response) => {
     response.send(serviceResponse, serviceResponse.statusCode);
 }
 
-exports.getAll = async (request, response) => {
-    serviceResponse = await UserService.getById(request.props.id);
-    response.send(serviceResponse, serviceResponse.statusCode);
-}
-
 exports.getById = async (request, response) => {
     serviceResponse = await UserService.getById(request.props.id);
     response.send(serviceResponse, serviceResponse.statusCode);
