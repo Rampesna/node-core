@@ -4,7 +4,7 @@ const Schema = Joi.object({
 
 });
 
-const GetAll = async (
+const GetAllRequest = async (
     request,
     response,
     next
@@ -22,4 +22,4 @@ const GetAll = async (
     }
 };
 
-module.exports = GetAll;
+module.exports = GetAllRequest;

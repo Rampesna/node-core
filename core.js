@@ -20,6 +20,7 @@ yargs.command({
         var ServiceName = moduleName + 'Service';
         var InterfaceName = 'I' + ServiceName;
         var ModelName = moduleName + 'Model';
+        var ControllerName = moduleName + 'Controller';
 
         if (fileSystem.existsSync('./app/interfaces/' + InterfaceName + '.js')) {
             console.log('Interface already exists!');
@@ -51,7 +52,15 @@ class ${ServiceName} extends ${InterfaceName} {
         super();
     }
 
-
+    async getAll() {
+        let all${moduleName}s = await ${ModelName}.findAll();
+        return serviceResponse(
+            true,
+            'All ${moduleName}s',
+            all${moduleName}s,
+            200
+        );
+    }
 }
 
 module.exports = new ${ServiceName}();`);
@@ -121,25 +130,90 @@ module.exports = {
     }
 };`);
 
+        if (fileSystem.existsSync('./app/http/controllers/' + moduleName + '.js')) {
+            console.log('Model already exists!');
+        } else {
+            var controllerFile = fileSystem.createWriteStream('./app/http/controllers/' + ControllerName + '.js');
+            controllerFile.write(`const ${ServiceName} = require('../../services/sequelize/${ServiceName}');
+            
+exports.getAll = async (request, response) => {
+    serviceResponse = await ${ServiceName}.getAll();
+    response.send(serviceResponse, serviceResponse.statusCode);
+}
+
+`);
+        }
+
         console.log('Module generated successfully!');
     }
 });
 
 yargs.command({
-    command: 'generate:controller',
-    describe: 'Generate a new module',
+    command: 'generate:request',
+    describe: 'Generate a new request',
     handler: function (arguments) {
-        console.log(arguments);
-        console.log('Controller creating...');
-    }
+        if (!arguments.path) {
+            console.log('Please provide a path to the request.');
+            return;
+        }
+
+        if (!arguments.name) {
+            console.log('Please provide a name to the request.');
+            return;
+        }
+
+        var additionalBackPathCount = 0;
+        var additionalBackPaths = '';
+        var requestPath = '';
+        var pathList = arguments.path.split('/');
+        pathList.forEach(function (path) {
+            if (path) {
+                requestPath += path + '/';
+                if (additionalBackPathCount > 0) {
+                    additionalBackPaths += '../';
+                }
+            }
+            if (!fileSystem.existsSync('./app/http/requests/' + requestPath)) {
+                fileSystem.mkdirSync('./app/http/requests/' + requestPath);
+            }
+            additionalBackPathCount++;
+        });
+
+
+        if (fileSystem.existsSync('./app/http/requests/' + requestPath + arguments.name + '.js')) {
+            console.log('Request already exists!');
+            return;
+        }
+
+        var requestFile = fileSystem.createWriteStream('./app/http/requests/' + requestPath + arguments.name + '.js');
+        requestFile.write(`const {serviceResponse} = require("../../../${additionalBackPaths}core/ServiceResponse");
+const Joi = require('joi');
+const Schema = Joi.object({
+
 });
 
-yargs.command({
-    command: 'generate:request',
-    describe: 'Generate a new module',
-    handler: function (arguments) {
-        console.log(arguments);
-        console.log('Request creating...');
+const ${arguments.name} = async (
+    request,
+    response,
+    next
+) => {
+    try {
+        await Schema.validateAsync(request.props);
+        next();
+    } catch (error) {
+        return response.send(serviceResponse(
+            false,
+            'Invalid request',
+            error.details,
+            422
+        ), 422);
+    }
+};
+
+module.exports = ${arguments.name};
+`);
+
+        console.log('Request generated successfully!');
     }
 });
 
