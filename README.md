@@ -14,7 +14,7 @@ npm init
 
 ### Database Configration
 
-Change config/database.json file according to your own information.
+Change config/database.json file and .env file according to your own information.
 
 ```shell
 {
@@ -42,6 +42,19 @@ Change config/database.json file according to your own information.
     "dialect": "mysql"
   }
 }
+```
+
+```shell
+SERVER_PORT=5000
+JWT_SECRET_KEY=CORE_JWT_SECRET_KEY
+TOKEN_HEADER_KEY=CORE_JWT_TOKEN_HEADER_KEY
+
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=nodejscore
+DB_USERNAME=root
+DB_PASSWORD=
 ```
 
 For create new module, so Migration, Model, Interface, Service and Controller, run this command
