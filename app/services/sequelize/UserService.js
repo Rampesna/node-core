@@ -56,7 +56,7 @@ class UserService extends IUserService {
         password,
         hash
     ) {
-        return password === hash;
+        return bcrypt.compare(password, hash);
     }
 
     async getAll() {
