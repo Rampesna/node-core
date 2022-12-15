@@ -50,8 +50,14 @@ For create Users and PersonelAccessTokens tables run migrate command
 npx sequelize-cli db:migrate
 ```
 
-For create new module, so Migration, Model, Interface and Service, run this command
+For create new module, so Migration, Model, Interface, Service and Controller, run this command
 
 ```shell
 node core generate:module --name ModuleName
+```
+
+For create new Request, run this command
+
+```shell
+node core generate:request --path ExampleController --name ExampleRequest
 ```
