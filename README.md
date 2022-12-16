@@ -69,8 +69,32 @@ After the necessary adjustments are completed in the created Migration file, run
 npx sequelize-cli db:migrate
 ```
 
+Run the following command to seed admin user
+
+```shell
+npx sequelize-cli db:seed:all
+```
+
 For create new Request, run this command
 
 ```shell
 node core generate:request --path ExampleController --name ExampleRequest
+```
+
+### Testing
+
+#### Login
+
+```shell
+curl --location --request POST 'http://HOST:PORT/api/v1/user/auth/login' \
+--header 'Accept: application/json' \
+--data-raw '{"email": "admin@admin.com", "password": "123456"}'
+```
+
+#### Get All Users
+
+```shell
+curl --location --request POST 'http://HOST:PORT/api/v1/user/login' \
+--header 'Accept: application/json' \
+--header 'Authorization: Bearer tokenFromLoginRequest' \
 ```

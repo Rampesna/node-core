@@ -17,6 +17,10 @@ const AuthenticationMiddleware = async (
 
     var validateTokenResponse = await PersonalAccessTokenService.validateToken(request.headers['authorization'].split(' ')[1]);
 
+    if (!validateTokenResponse.isSuccess) {
+        return response.send(validateTokenResponse, 401);
+    }
+
     request.user = {
         id: validateTokenResponse.data.id,
         name: validateTokenResponse.data.name,
