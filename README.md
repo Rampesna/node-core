@@ -1,6 +1,6 @@
 # node-core
 
-NodeCore is core system for develope NodeJs applications.
+NodeCore is core system for developing NodeJs applications.
 
 ## Installation
 
