@@ -1,13 +1,13 @@
 {
   "name": "@talhacan/node-core",
-  "version": "1.0.1",
+  "version": "1.0.0",
   "description": "NodeCore is core system for developing NodeJs applications.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
+  "author": "Talha Can",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.1.0",
