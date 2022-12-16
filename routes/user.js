@@ -13,7 +13,7 @@ const CoreRequestMiddleware = require('../app/http/middlewares/CoreRequestMiddle
 const AuthenticationMiddleware = require('../app/http/middlewares/AuthenticationMiddleware');
 
 router.use(CoreRequestMiddleware);
-router.post('/login', LoginRequest, UserController.login);
+router.post('/auth/login', LoginRequest, UserController.login);
 
 router.use(AuthenticationMiddleware);
 router.get('/getProfile', GetProfileRequest, UserController.getProfile);

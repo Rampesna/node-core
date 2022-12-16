@@ -20,7 +20,7 @@ const userRoutes = require('./routes/user');
  * */
 expressServer.use(express.json());
 expressServer.listen(environments.SERVER_PORT);
-expressServer.use('/user', userRoutes);
+expressServer.use('/api/v1/user', userRoutes);
 
 /**
  * Catch 404 and forward to error handler
