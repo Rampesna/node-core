@@ -1,17 +1,25 @@
 const express = require('express');
 const router = express.Router();
 
+// Middlewares
+const CorsMiddleware = require('../app/http/middlewares/CorsMiddleware');
+const CoreRequestMiddleware = require('../app/http/middlewares/CoreRequestMiddleware');
+const AuthenticationMiddleware = require('../app/http/middlewares/AuthenticationMiddleware');
+
+
+// Controllers
 const UserController = require('../app/http/controllers/UserController');
 
+
+// Requests
 const LoginRequest = require("../app/http/requests/UserController/LoginRequest");
 const GetProfileRequest = require("../app/http/requests/UserController/GetProfileRequest");
 const GetAllRequest = require("../app/http/requests/UserController/GetAllRequest");
 const GetByIdRequest = require("../app/http/requests/UserController/GetByIdRequest");
 const DeleteRequest = require("../app/http/requests/UserController/DeleteRequest");
 
-const CoreRequestMiddleware = require('../app/http/middlewares/CoreRequestMiddleware');
-const AuthenticationMiddleware = require('../app/http/middlewares/AuthenticationMiddleware');
 
+router.use(CorsMiddleware);
 router.use(CoreRequestMiddleware);
 router.post('/auth/login', LoginRequest, UserController.login);
 
