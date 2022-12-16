@@ -1,7 +1,7 @@
 {
-  "name": "core",
+  "name": "@rampesna/node-core",
   "version": "1.0.0",
-  "description": "",
+  "description": "NodeCore is core system for developing NodeJs applications.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -27,5 +27,14 @@
     "sqlite3": "^5.1.2",
     "tedious": "^15.1.2",
     "yargs": "^17.6.2"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rampesna/node-core.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Rampesna/node-core/issues"
+  },
+  "homepage": "https://github.com/Rampesna/node-core#readme"
 }
