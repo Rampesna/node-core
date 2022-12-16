@@ -1,6 +1,6 @@
 {
-  "name": "@rampesna/node-core",
-  "version": "1.0.0",
+  "name": "@talhacan/node-core",
+  "version": "1.0.1",
   "description": "NodeCore is core system for developing NodeJs applications.",
   "main": "index.js",
   "scripts": {
