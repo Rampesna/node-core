@@ -24,7 +24,8 @@ module.exports = () => {
             sequelize: sequelizeConnection,
             paranoid: true,
             modelName: 'PersonelAccessToken',
-        });
+        }
+    );
 
     return PersonelAccessToken;
 };

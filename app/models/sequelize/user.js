@@ -23,7 +23,8 @@ module.exports = () => {
             sequelize: sequelizeConnection,
             paranoid: true,
             modelName: 'User',
-        });
+        }
+    );
 
     return User;
 };

@@ -92,7 +92,8 @@ module.exports = () => {
             sequelize: sequelizeConnection,
             paranoid: true,
             modelName: '${moduleName}',
-        });
+        }
+    );
 
     return ${moduleName};
 };`);
