@@ -145,6 +145,56 @@ exports.getAll = async (request, response) => {
 `);
         }
 
+        if (fileSystem.existsSync('./routes/' + moduleName.toLowerCase() + '.js')) {
+            console.log('Router already exists!');
+        } else {
+            var routerFile = fileSystem.createWriteStream('./routes/' + moduleName.toLowerCase() + '.js');
+            routerFile.write(`const express = require('express');
+const router = express.Router();
+
+const AuthenticationMiddleware = require('../app/http/middlewares/AuthenticationMiddleware');
+
+// Controllers
+const ${ControllerName} = require('../app/http/controllers/${ControllerName}');
+
+// Requests
+const GetAllRequest = require("../app/http/requests/${ControllerName}/GetAllRequest");
+
+router.use(AuthenticationMiddleware);
+router.get('/getAll', GetAllRequest, ${ControllerName}.getAll);
+
+module.exports = router;`);
+        }
+
+        fileSystem.mkdirSync('./app/http/requests/' + ControllerName);
+        var requestFile = fileSystem.createWriteStream('./app/http/requests/' + ControllerName + '/GetAllRequest.js');
+        requestFile.write(`const {serviceResponse} = require("../../../core/ServiceResponse");
+const Joi = require('joi');
+const Schema = Joi.object({
+
+});
+
+const GetAllRequest = async (
+    request,
+    response,
+    next
+) => {
+    try {
+        await Schema.validateAsync(request.props);
+        next();
+    } catch (error) {
+        return response.send(serviceResponse(
+            false,
+            'Invalid request',
+            error.details,
+            422
+        ), 422);
+    }
+};
+
+module.exports = GetAllRequest;
+`);
+
         console.log('Module generated successfully!');
     }
 });
