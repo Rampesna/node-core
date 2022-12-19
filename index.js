@@ -12,7 +12,7 @@ const environments = require('dotenv').config().parsed;
 /**
  * User Routes
  * */
-const userRoutes = require('./routes/user');
+const coreRouter = require('./routes/core');
 
 /**
  * Enable Express Server to use bodyParser
@@ -20,7 +20,7 @@ const userRoutes = require('./routes/user');
  * */
 expressServer.use(express.json());
 expressServer.listen(environments.SERVER_PORT);
-expressServer.use('/api/v1/user', userRoutes);
+expressServer.use('/api/v1', coreRouter);
 
 /**
  * Catch 404 and forward to error handler
