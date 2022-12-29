@@ -94,7 +94,7 @@ curl --location --request POST 'http://HOST:PORT/api/v1/user/auth/login' \
 #### Get All Users
 
 ```shell
-curl --location --request POST 'http://HOST:PORT/api/v1/user/getAll' \
+curl --location --request GET 'http://HOST:PORT/api/v1/user/getAll' \
 --header 'Accept: application/json' \
 --header 'Authorization: Bearer tokenFromLoginRequest' \
 ```
