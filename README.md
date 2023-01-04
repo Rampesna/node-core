@@ -12,6 +12,12 @@ To use this package, NPM must be pre-installed on your system.
 npm init
 ```
 
+### Install nodemon globally
+
+```shell
+npm install -g nodemon
+```
+
 ### Database Configration
 
 Change config/database.json file and .env file according to your own information.
@@ -57,12 +63,6 @@ DB_USERNAME=root
 DB_PASSWORD=
 ```
 
-For create new module, so Migration, Model, Interface, Service and Controller, run this command
-
-```shell
-node core generate:module --name ModuleName
-```
-
 After the necessary adjustments are completed in the created Migration file, run the following command to create the tables again
 
 ```shell
@@ -75,6 +75,20 @@ Run the following command to seed admin user
 npx sequelize-cli db:seed:all
 ```
 
+For create new module, so Route, Controller, Request, Interface, Service, Migration and Model, run this command
+
+```shell
+node core generate:module --name ModuleName
+```
+
+After generated new module, migration file must be edited for your own needs, and then run the following command again to create the table,
+
+```shell
+npx sequelize-cli db:migrate
+```
+
+After migrated new table, Model file must be edited according to migration file.
+
 For create new Request, run this command
 
 ```shell
@@ -82,6 +96,12 @@ node core generate:request --path ExampleController --name ExampleRequest
 ```
 
 ### Testing
+
+#### Start server
+
+```shell
+nodemon index
+```
 
 #### Login
 
