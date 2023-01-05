@@ -6,13 +6,13 @@ const {
 } = require('../../../config/database');
 
 module.exports = () => {
-    class User extends Model {
+    class UserModel extends Model {
         static associate(models) {
 
         }
     }
 
-    User.init(
+    UserModel.init(
         {
             name: DataTypes.STRING,
             email: DataTypes.STRING,
@@ -26,5 +26,5 @@ module.exports = () => {
         }
     );
 
-    return User;
+    return UserModel;
 };
