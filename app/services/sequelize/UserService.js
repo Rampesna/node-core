@@ -1,6 +1,6 @@
 const {serviceResponse} = require('../../core/ServiceResponse');
 const IUserService = require('../../interfaces/IUserService');
-const UserModel = require('../../models/sequelize/user')();
+const UserModel = require('../../models/sequelize/User')();
 const bcrypt = require('bcrypt');
 const PersonalAccessTokenService = require('./PersonalAccessTokenService');
 

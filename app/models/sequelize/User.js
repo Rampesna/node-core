@@ -1,4 +1,3 @@
-"use strict";
 const {
     sequelizeConnection,
     DataTypes,
@@ -8,7 +7,10 @@ const {
 module.exports = () => {
     class UserModel extends Model {
         static associate(models) {
-
+            // this.hasMany(models.TodoModel, {
+            //     foreignKey: 'userId',
+            //     as: 'todos',
+            // });
         }
     }
 
