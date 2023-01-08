@@ -1,6 +1,6 @@
 const {serviceResponse} = require("../../core/ServiceResponse");
 const IPersonalAccessTokenService = require("../../interfaces/IPersonalAccessTokenService");
-const PersonalAccessTokenModel = require("../../models/sequelize/personelaccesstoken")();
+const PersonalAccessTokenModel = require("../../models/sequelize/PersonelAccessToken")();
 const jwt = require('jsonwebtoken');
 const environments = require('dotenv').config().parsed;
 

@@ -1,4 +1,3 @@
-"use strict";
 const {
     sequelizeConnection,
     DataTypes,
@@ -6,13 +5,16 @@ const {
 } = require('../../../config/database');
 
 module.exports = () => {
-    class User extends Model {
+    class UserModel extends Model {
         static associate(models) {
-
+            // this.hasMany(models.TodoModel, {
+            //     foreignKey: 'userId',
+            //     as: 'todos',
+            // });
         }
     }
 
-    User.init(
+    UserModel.init(
         {
             name: DataTypes.STRING,
             email: DataTypes.STRING,
@@ -26,5 +28,5 @@ module.exports = () => {
         }
     );
 
-    return User;
+    return UserModel;
 };

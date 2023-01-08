@@ -78,7 +78,7 @@ const {
 } = require('../../../config/database');
 
 module.exports = () => {
-    class ${moduleName} extends Model {
+    class ${moduleName}Model extends Model {
         static associate(models) {
 
         }
@@ -95,7 +95,7 @@ module.exports = () => {
         }
     );
 
-    return ${moduleName};
+    return ${moduleName}Model;
 };`);
         }
 

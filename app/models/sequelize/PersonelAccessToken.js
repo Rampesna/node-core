@@ -1,4 +1,3 @@
-"use strict";
 const {
     sequelizeConnection,
     DataTypes,
@@ -6,13 +5,13 @@ const {
 } = require('../../../config/database');
 
 module.exports = () => {
-    class PersonelAccessToken extends Model {
+    class PersonelAccessTokenModel extends Model {
         static associate(models) {
 
         }
     }
 
-    PersonelAccessToken.init(
+    PersonelAccessTokenModel.init(
         {
             tokenableType: DataTypes.STRING,
             tokenableId: DataTypes.BIGINT,
@@ -27,5 +26,5 @@ module.exports = () => {
         }
     );
 
-    return PersonelAccessToken;
+    return PersonelAccessTokenModel;
 };
